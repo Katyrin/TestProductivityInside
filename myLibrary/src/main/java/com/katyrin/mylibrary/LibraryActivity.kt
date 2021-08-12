@@ -11,6 +11,7 @@ internal class LibraryActivity : AppCompatActivity() {
     private var binding: ActivityLibraryBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        savedInstanceState ?: RxBus.publish(getString(R.string.on_open))
         super.onCreate(savedInstanceState)
         binding = ActivityLibraryBinding.inflate(layoutInflater)
         setContentView(binding?.root)
@@ -20,6 +21,11 @@ internal class LibraryActivity : AppCompatActivity() {
     private fun initViews() {
         val bundle = intent.extras
         binding?.textView?.text = bundle?.getString(REQUEST_TEXT_EXTRA)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        RxBus.publish(getString(R.string.on_closed))
     }
 
     override fun onDestroy() {

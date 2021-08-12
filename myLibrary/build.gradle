@@ -10,9 +10,8 @@ dependencies {
     implementation Design.constraintLayout
 
     implementation Kotlin.core
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+
+    implementation RxJava.rxjava
 
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.testJUnit

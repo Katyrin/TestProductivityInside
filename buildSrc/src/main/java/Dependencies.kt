@@ -29,6 +29,9 @@ object Versions {
     // Kotlin
     const val core = "1.6.0"
 
+    // RxJava
+    const val rxjava = "3.0.3"
+
     // Koin
     const val koinAndroid = "2.2.1"
     const val koinViewModel = "2.2.1"
@@ -55,6 +58,10 @@ object Design {
 
 object Kotlin {
     const val core = "androidx.core:core-ktx:${Versions.core}"
+}
+
+object RxJava {
+    const val rxjava = "io.reactivex.rxjava3:rxjava:${Versions.rxjava}"
 }
 
 object Koin {
