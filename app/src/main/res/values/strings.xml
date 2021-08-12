@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TestProductivityInside</string>
+    <string name="enter_your_text">Enter your text</string>
+    <string name="request">Request</string>
+    <string name="uploaded_image">Uploaded image</string>
+    <string name="upload">Upload</string>
 </resources>
