@@ -1,1 +1,4 @@
-<resources></resources>
+<resources>
+    <string name="on_open">onOpen</string>
+    <string name="on_closed">onClosed</string>
+</resources>

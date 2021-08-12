@@ -21,6 +21,8 @@ android {
 
 dependencies {
 
+    implementation project(Modules.myLibrary)
+
     implementation Design.appcompat
     implementation Design.material
     implementation Design.constraintLayout
