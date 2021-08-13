@@ -29,6 +29,8 @@ dependencies {
 
     implementation Kotlin.core
 
+    implementation Glide.glide
+
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.testJUnit
     androidTestImplementation TestImpl.espresso

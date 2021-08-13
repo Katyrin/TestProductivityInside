@@ -32,15 +32,8 @@ object Versions {
     // RxJava
     const val rxjava = "3.0.3"
 
-    // Koin
-    const val koinAndroid = "2.2.1"
-    const val koinViewModel = "2.2.1"
-    const val koinScope = "2.2.1"
-    const val koinFragment = "2.2.1"
-
     // Glide
     const val glide = "4.12.0"
-    const val glideCompiler = "4.12.0"
 
     // Test
     const val jUnit = "4.13.2"
@@ -64,16 +57,8 @@ object RxJava {
     const val rxjava = "io.reactivex.rxjava3:rxjava:${Versions.rxjava}"
 }
 
-object Koin {
-    const val koinAndroid = "org.koin:koin-android:${Versions.koinAndroid}"
-    const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koinViewModel}"
-    const val koinScope = "org.koin:koin-androidx-scope:${Versions.koinScope}"
-    const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koinFragment}"
-}
-
 object Glide {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glideCompiler}"
 }
 
 object TestImpl {
