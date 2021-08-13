@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        val imageUri: Uri? = savedInstanceState?.getParcelable("IMAGE_URI")
+        val imageUri: Uri? = savedInstanceState?.getParcelable(IMAGE_URI)
         imageUri?.let { setImage(it) }
         initMyLibrary()
         initView()
@@ -53,12 +53,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelable("IMAGE_URI", uri)
+        outState.putParcelable(IMAGE_URI, uri)
     }
 
     override fun onDestroy() {
         binding = null
         myLibrary = null
         super.onDestroy()
+    }
+
+    private companion object {
+        const val IMAGE_URI = "IMAGE_URI"
     }
 }
