@@ -3,33 +3,41 @@ package com.katyrin.testproductivityinside
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.katyrin.mylibrary.MyLibrary
-import com.katyrin.mylibrary.MyLibraryImpl
+import com.katyrin.mylibrary.AbsMyLibraryActivity
 import com.katyrin.testproductivityinside.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AbsMyLibraryActivity() {
 
     private var binding: ActivityMainBinding? = null
-    private var myLibrary: MyLibrary? = null
     private var uri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        val imageUri: Uri? = savedInstanceState?.getParcelable("IMAGE_URI")
-        imageUri?.let { setImage(it) }
-        initMyLibrary()
+        val imageUri: Uri? = savedInstanceState?.getParcelable(IMAGE_URI)
+        imageUri?.let { setImageByUri(it) }
         initView()
     }
 
-    private fun initMyLibrary() {
-        myLibrary = MyLibraryImpl(this) { uri -> setImage(uri) }
+    private fun initView() {
+        binding?.requestButton?.setOnClickListener { openNewScreen() }
+        binding?.uploadButton?.setOnClickListener { callDialogSelectionImages() }
     }
 
-    private fun setImage(uri: Uri) {
+    private fun openNewScreen() {
+        createNewActivity(binding?.editText?.text.toString()) { textState ->
+            Toast.makeText(this, textState, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(IMAGE_URI, uri)
+    }
+
+    override fun setImageByUri(uri: Uri) {
         this.uri = uri
         binding?.contentImageView?.let { imageView ->
             Glide.with(imageView)
@@ -38,27 +46,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initView() {
-        binding?.requestButton?.setOnClickListener { openNewScreen() }
-        binding?.uploadButton?.setOnClickListener {
-            myLibrary?.callDialogSelectionImages()
-        }
-    }
-
-    private fun openNewScreen() {
-        myLibrary?.createNewActivity(binding?.editText?.text.toString()) { textState ->
-            Toast.makeText(this, textState, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putParcelable("IMAGE_URI", uri)
-    }
-
     override fun onDestroy() {
         binding = null
-        myLibrary = null
         super.onDestroy()
+    }
+
+    private companion object {
+        const val IMAGE_URI = "IMAGE_URI"
     }
 }
